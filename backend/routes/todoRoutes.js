@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Todo = require("./models/TodoModel"); // Replace with your actual path
+const Todo = require("../models/TodoModel"); // Replace with your actual path
 
 // Get all todos
 router.get("/", async (req, res) => {

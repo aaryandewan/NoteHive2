@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-// const userRoutes = require("./routes/userRoutes");
-// const todoRoutes = require("./routes/todoRoutes");
+const userRoutes = require("./routes/userRoutes");
+const todoRoutes = require("./routes/todoRoutes");
 
 const app = express();
 
@@ -19,8 +19,8 @@ mongoose
   .catch((error) => console.error("Failed to connect to MongoDB: ", error));
 
 // Use your routes
-// app.use("/api/users", userRoutes);
-// app.use("/api/todos", todoRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/todos", todoRoutes);
 
 const PORT = process.env.PORT || 3000;
 
