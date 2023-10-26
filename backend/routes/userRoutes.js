@@ -41,7 +41,7 @@ router.post("/signup", async (req, res) => {
 // Log In Route
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
 
     // Find the user
     const user = await User.findOne({ email });
@@ -68,8 +68,10 @@ router.post("/login", async (req, res) => {
 
 // Profile Route
 router.get("/profile", verifyToken, async (req, res) => {
+  // console.log("profile - ", userId, "---", req.query);
   try {
     const userId = req.userId; // this is set by our verifyToken middleware
+
     const user = await User.findById(userId).select("-password"); // don't send back the password
 
     if (!user) {
